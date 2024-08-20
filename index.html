@@ -31,22 +31,21 @@
 					return new Date(b.pushed_at) - new Date(a.pushed_at);
 				});
 				var l = repositories.length, w = 0, f = 0;
-				for (var i=0; i<l; i++){
-					var r = repositories[i],
-						fork = r.fork ? ' class="fork"' : '',
+				for (var i = 0; i < l; i++) {
+					var r = repositories[i]
 						watchers = r.watchers,
 						forks = r.forks;
 					w += r.watchers;
 					f += r.forks;
-					html += '<li' + fork + '>'
+					html += '<li class="' + (r.fork ? 'fork' : '') + ' ' + (r.archived ? 'archived' : '') + '">'
 						+ '<a href="' + r.html_url + '">'
-						+ '<span class="info"><b class="language">' + (r.language || '') + '</b> <b class="stars">' + watchers + '</b> <b class="forks">' + forks + '</b></span>'
-						+ '<b>' + r.name + '</b> '
-						+ '<span class="desc">' + r.description + '</span>'
+						+ '<span class="info"><span class="language">' + (r.language || '') + '</span> <span class="stars">' + watchers + '</span> <span class="forks">' + forks + '</span></span>'
+						+ '<span class="name">' + r.name + '</span> '
+						+ '<span class="desc">' + (r.description || '') + '</span>'
 						+ '</a>';
 				}
 				reposList.innerHTML = html;
-				projectsInfo.innerHTML = '<b class="stars">' + w + '</b> <b class="forks">' + f + '</b>';
+				projectsInfo.innerHTML = '<span class="stars">' + w + '</span> <span class="forks">' + f + '</span>';
 			};
 		</script>
 		<script src="https://api.github.com/users/brendanmurty/repos?callback=load&per_page=100"></script>

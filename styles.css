@@ -1,125 +1,148 @@
+:root {
+  --text-colour: #fff;
+  --bg-colour: #000;
+  --highlight-colour: #23c5b0;
+  --alt-colour: #ccc;
+  --list-bg-colour-alt: #222;
+  --list-bg-colour-hover: #333;
+  --icon-colour: #aaa;
+  --icon-unicode-archive: '\25A8';
+  --icon-unicode-fork: '\2646';
+  --icon-unicode-star: '\2605';
+}
+
 body {
-	color: #fff;
-	background-color: #000;
-	font-family: helvetica, arial, sans-serif;
-	font-size: 16px;
-	margin: 0;
-	padding: 0;
+  color: var(--text-colour);
+  background-color: var(--bg-colour);
+  font-family: helvetica, arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-	font-size: 18px;
-	margin: 0;
-	padding: 0;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
 }
 
 h1 a {
-	color: #23c5b0;
-	display: block;
-	line-height: 20px;
-	padding: 15px 25px;
-	border-bottom: 1px solid #666;
+  color: var(--highlight-colour);
+  display: block;
+  line-height: 20px;
+  padding: 15px 25px;
+  border-bottom: 1px solid #666;
 }
 
 #projects-count {
-	font-weight: normal;
-	color: #ccc;
-	font-size: 16px;	
-	display: block;
-	line-height: 1.3em;
-	margin-top: 0.5em;
+  font-weight: normal;
+  color: var(--alt-colour);
+  font-size: 16px;
+  display: block;
+  line-height: 1.3em;
+  margin-top: 0.5em;
 }
 
 a {
-	color: #fff;
-	background-color: transparent;
-	text-decoration: none;
-	-webkit-transition: all .2s;
-	-moz-transition: all .2s;
-	-ms-transition: all .2s;
-	-o-transition: all .2s;
-	transition: all .2s;
+  color: #fff;
+  background-color: transparent;
+  text-decoration: none;
+  -webkit-transition: all .2s;
+  -moz-transition: all .2s;
+  -ms-transition: all .2s;
+  -o-transition: all .2s;
+  transition: all .2s;
 }
 
 a:hover {
-	color: #23c5b0;
-	background-color: #333;
+  color: var(--highlight-colour);
+  background-color: var(--list-bg-colour-hover);
 }
 
 #repos-list {
-	margin: 0;
-	padding: 0;
-	list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 #repos-list li {
-	display: inline;
+  display: inline;
 }
 
 #repos-list li a {
-	position: relative;
-	display: block;
-	line-height: 20px;
-	padding: 15px 25px;
-	overflow: hidden;
+  position: relative;
+  display: block;
+  line-height: 20px;
+  padding: 15px 25px;
+  overflow: hidden;
 }
 
 #repos-list li:nth-child(odd) a {
-	background-color: #222;
+  background-color: var(--list-bg-colour-alt);
 }
 
 #repos-list li a:hover {
-	background-color: #333;
+  background-color: var(--list-bg-colour-hover);
 }
 
-#repos-list li a > b {
-	color: #23c5b0;
+#repos-list li a:before {
+  font-size: 18px;
+  color: var(--icon-colour);
+  position: absolute;
+  left: 5px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 #repos-list li.fork a:before {
-	font-size: 18px;
-	color: #aaa;
-	content: '\2646';
-	position: absolute;
-	left: 5px;
-	-webkit-transform: rotate(90deg);
-	-moz-transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-	-o-transform: rotate(90deg);
-	transform: rotate(90deg);
+  content: var(--icon-unicode-fork);
+}
+
+#repos-list li.archived a:before {
+  content: var(--icon-unicode-archive);
+}
+
+#repos-list li a .name {
+  color: var(--highlight-colour);
+  display: block;
+  font-weight: bold;
 }
 
 #repos-list li a .desc {
-	color: #ccc;
-	display: block;
-	line-height: 1.3em;
-	margin-top: 0.5em;
+  color: var(--alt-colour);
+  display: block;
+  line-height: 1.3em;
+  margin-top: 0.5em;
 }
 
 #projects-info,
 #repos-list li a .info {
-	float: right;
-	clear: right;
+  float: right;
+  clear: right;
 }
 
-b.stars,
-b.forks {
-	font-weight: bold;
-	display: inline-block;
+.stars,
+.forks {
+  font-weight: bold;
+  display: inline-block;
 }
 
-b.stars:before,
-b.forks:before {
-	display: inline-block;
-	font-size: 14px;
-	width: 20px;
-	text-align: center;
+.archived:before,
+.stars:before,
+.forks:before {
+  display: inline-block;
+  font-size: 14px;
+  width: 20px;
+  text-align: center;
 }
 
-b.stars:before {
-	content: '\2605';
+.stars:before {
+  content: var(--icon-unicode-star);
 }
 
-b.forks:before {
-	content: '\2646';
+.forks:before {
+  content: var(--icon-unicode-fork);
 }
